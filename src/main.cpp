@@ -16,7 +16,7 @@
 #define RX_PIN GPIO_RX1
 #define TX_PIN GPIO_TX1
 
-// Default RX/TX is used by USB-CDC*, cant use it for analyze with logic analyzer (always be high)
+// Default RX/TX is used by USB-CDC*, cant use it to analyze with logic analyzer (will always be high)
 
 // override HardwareSerial::begin case UART_NUM_1: to match custom RX1/TX1
 // in .platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.cppHardwareSerial.cpp
