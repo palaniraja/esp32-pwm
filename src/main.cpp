@@ -16,6 +16,8 @@
 #define RX_PIN GPIO_RX1
 #define TX_PIN GPIO_TX1
 
+#define DUTY_CYCLE 255
+
 // Default RX/TX is used by USB-CDC*, cant use it to analyze with logic analyzer (will always be high)
 
 // override HardwareSerial::begin case UART_NUM_1: to match custom RX1/TX1
@@ -52,5 +54,21 @@ void loop()
 {
     Serial.printf("loop..");   // default uart/serial output
     Serial2.printf("loop2.."); // it should showup in logic analyzer (Async serial / 115200 8-N-1 / ASCII)
-    pulseLED(500);
+    //pulseLED(500);
+    
+     // increase the LED brightness
+    for (int dutyCycle = 0; dutyCycle <= DUTY_CYCLE; dutyCycle++)
+    {
+        // changing the LED brightness with PWM
+        analogWrite(GPIO_LED, dutyCycle);
+        delay(15);
+    }
+
+    // decrease the LED brightness
+    for (int dutyCycle = DUTY_CYCLE; dutyCycle >= 0; dutyCycle--)
+    {
+        // changing the LED brightness with PWM
+        analogWrite(GPIO_LED, dutyCycle);
+        delay(15);
+    }
 }
